@@ -343,8 +343,7 @@ int main ()
 
           /* error is the difference between the desired velocity computed by the path planner, which is the last point of v_points[], and the actual velocity */
 
-		  error_throttle = v_points[v_points.size() - 1] - velocity;          
-
+		  error_throttle = v_points[v_points.size() - 1] - velocity;   
 
           double throttle_output;
           double brake_output;

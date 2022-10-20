@@ -35,7 +35,7 @@ void PID::UpdateError(double cte) {
    **/
   cte = cte;
   diff_cte = (cte - prev_cte) / dt;
-  int_cte += cte;
+  int_cte += cte*dt;
   prev_cte = cte;  
 }
 

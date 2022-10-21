@@ -227,9 +227,9 @@ int main ()
 
   PID pid_steer = PID();
   // initial values based on https://knowledge.udacity.com/questions/852973
-  pid_steer.Init(0.3, 0.001, 0.7, 1.2, -1.2);
+  pid_steer.Init(0.31, 0.0001, .3, 1.2, -1.2);
   PID pid_throttle = PID();
-  pid_throttle.Init(0.2, 0.0009, 0.1, 1.0, -1.0);
+  pid_throttle.Init(0.21, 0.0001, .1, 1.0, -1.0);
 
   h.onMessage([&pid_steer, &pid_throttle, &new_delta_time, &timer, &prev_timer, &i, &prev_timer](uWS::WebSocket<uWS::SERVER> ws, char *data, size_t length, uWS::OpCode opCode)
   {
@@ -351,11 +351,12 @@ int main ()
           /**
           * TODO (step 2): uncomment these lines
           **/
-//           // Compute control to apply
+
+          // Compute control to apply
            pid_throttle.UpdateError(error_throttle);
            double throttle = pid_throttle.TotalError();
 
-//           // Adapt the negative throttle to brake
+           // Adapt the negative throttle to brake
            if (throttle > 0.0) {
              throttle_output = throttle;
              brake_output = 0;

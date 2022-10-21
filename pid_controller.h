@@ -17,17 +17,20 @@ public:
     /*
     * Errors
     */
-   double cte;
-   double diff_cte;
-   double int_cte;
-   double prev_cte;
+   double p_error;
+   double d_error;
+   double i_error;
+   double cte1;
+   double cte2;
+   double cte3;
+   bool saturated;
   
     /*
     * Coefficients
     */
-   double tau_p;
-   double tau_i;
-   double tau_d;
+   double Kp;
+   double Ki;
+   double Kd;
 
     /*
     * Output limits
@@ -39,7 +42,8 @@ public:
     * Delta time
     */
    double dt;
-
+   double dt1;
+   double dt2;
     /*
     * Constructor
     */

@@ -10,7 +10,7 @@ A few notes about my implementation of the PID controllers for throttle and stee
 
 1. For the derivative, I used 4 points instead of 2 to calculate the derivative. The derivative term is highly susceptible to noise so I used an averaging technique. Also the noise problem becomes worse if the sampling rate is high (i.e. low dt). Thus, I computed the derivative over 4 points instead of 2. Essentially, I kept a buffer of the last 4 error points and computed the derivative over that interval. This seemed to help with stability.
 
-2. For the integral, I wanted to avoid the integral windup problem so I only increased the integral error term when the total error was not "saturated", meaning it was within the specified range. Again, I found that this helped with system stability. 
+2. For the integral, I wanted to avoid the integral windup problem so I only increased the integral error term when the control output was not "saturated", meaning it was within the specified range. Again, I found that this helped with system stability. 
 
 ## Step 4: Tuning the PID controllers for steering and throttle and evaluating the PID efficiency
 ### P only 

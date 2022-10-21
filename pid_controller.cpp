@@ -41,6 +41,9 @@ void PID::UpdateError(double cte) {
    /**
    * TODO: Update PID errors based on cte.
    **/
+  
+  /* Compute derivative over previous 4 points to get an average and avoid high-frequency noise */
+  
   double sum_dt;
 
   p_error = cte;
@@ -50,6 +53,7 @@ void PID::UpdateError(double cte) {
   } else {
     d_error = 0;
   }
+  /* only update i_error if output is not saturated in order to avoid integral windup */
   if (saturated == 0) {
   	i_error += cte*dt;
   }
@@ -63,11 +67,12 @@ double PID::TotalError() {
    * TODO: Calculate and return the total error
     * The code should return a value in the interval [output_lim_mini, output_lim_maxi]
    */
+  
     double control = Kp*p_error + Ki*i_error + Kd*d_error;
-    saturated=0;
+    saturated=0;	// flag for saturated control output
     if (control < output_lim_min) {
       control = output_lim_min; 
-      saturated=1;
+      saturated=1;	// use to prevent integral windup
     } else if (control > output_lim_max) {
       control = output_lim_max;
       saturated=1;
@@ -79,6 +84,8 @@ double PID::UpdateDeltaTime(double new_delta_time) {
    /**
    * TODO: Update the delta time with new value
    */
+   /* keep track of previous 2 dt values for derivative calculation */
+  
    dt2 = dt1;
    dt1 = dt;
    dt = new_delta_time;

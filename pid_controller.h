@@ -17,13 +17,13 @@ public:
     /*
     * Errors
     */
-   double p_error;
-   double d_error;
-   double i_error;
-   double cte1;
-   double cte2;
-   double cte3;
-   bool saturated;
+   double p_error;	// cte at n
+   double d_error;	// derivative error
+   double i_error;	// integral error
+   double cte1;		// cte at n-1
+   double cte2;		// cte at n-2
+   double cte3;		// cte at n-3
+   bool saturated;	// flag if control output saturated
   
     /*
     * Coefficients
@@ -41,9 +41,9 @@ public:
     /*
     * Delta time
     */
-   double dt;
-   double dt1;
-   double dt2;
+   double dt;		// current dt at n
+   double dt1;		// dt at n-1
+   double dt2;		// dt an n-2
     /*
     * Constructor
     */

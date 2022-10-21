@@ -57,5 +57,17 @@ I tried to roughly follow the Ziegler-Nichols tuning method. I started with P on
 
 4. PID controller is a model free controller, i.e. it does not use a model of the car. Could you explain the pros and cons of this type of controller?
 
-PID is useful when it is not feasible to develop a model for a system. It can be used for almost any type of system with fairly good results. However, the tuning process is difficult. If the system changes in some way, the PID gains may need to be re-tuned.
+PID is a very useful controller for many various systems. It has been used successfully for many years on many different types of systems. Some of the pros and cons are listed below.
+
+Pros:
+1. The system does not need to have a mathematical model in order to implement a PID controller for it. This is helpful when it is not feasible to develop a mathematical model.
+2. It is relatively easy to come up with a PID controller. 
+3. PID control uses negative feedback so the error can often be driven to low values with appropriate parameter selection. This is a big advantage over an open-loop controller.
+4. PID control can be tailored to the individual system requirements. For a very simple system, P control may be adequate. For other systems, PD control may be most suitable. Thus, PID controllers have a lot of flexibility.
+
+Cons:
+1. The derivative terms can be highly susceptible to noise.
+2. Integral windup can cause large errors if the integral term is not limited.
+3. PID control is not optimal and is not as good as control using a good mathematical model. For critical systems, such as aircraft or other safety critical systems, PID control is inadequate.
+4. Parameter tuning can be difficult and time-consuming.
 

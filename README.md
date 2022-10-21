@@ -31,6 +31,7 @@ I next added D control (Kp = 0.31, Kd = 0.3 for steering, Kp = 0.21, Kd = 0.1 fo
 ### PID 
 
 I next added an I term to the steering and throttle control as shown in the commands below.
+
   pid_steer.Init(0.31, 0.0001, .3, 1.2, -1.2);
   
   pid_throttle.Init(0.21, 0.0001, .1, 1.0, -1.0);
